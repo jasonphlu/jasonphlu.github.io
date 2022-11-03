@@ -1,0 +1,19 @@
+.coursework {
+    max-width: 80%;
+    left: 10%;
+    right: 10%;
+    position: relative;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.coursework h1 {
+    color: #FED401;
+    font-size: 20px;
+}
+.coursework p {
+    color: #fff;
+}
+.coursework ul {
+    color: #fff;
+}

@@ -1,0 +1,63 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: #000000;
+}
+.navbar {
+    background:#808080;
+}
+.nav-link,
+.navbar-brand {
+    color: #fff;
+    cursor: pointer;
+}
+.nav-link {
+    margin-right: 1em !important;
+}
+.nav-link:hover {
+    color: #000;
+}
+.navbar-collapse {
+    justify-content: flex-end;
+}
+.description {
+    position: relative;
+    padding-top: 50px;
+    left: 10%;
+    max-width: 50%;
+    top: 12%;
+    text-align: left;
+}
+.description h1 {
+    color: #FED401;
+}
+.description p {
+    color: #fff;
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+.pfp {
+    left: 61%;
+    position: absolute;
+    top: 20%;
+}
+.pfp img {
+    width: 60%;
+    height: 60%;
+}
+.coursework {
+    padding-top: 20px;
+    color: #fff;
+    left: 10%;
+    max-width: 50%;
+    position: relative;
+    text-align: left;
+}
+.coursework p {
+    font-size: 1.3rem;
+    color: #fff;
+
+}
+.coursework ul {
+    font-size: 1rem;
+}

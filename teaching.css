@@ -1,0 +1,28 @@
+.teach {
+    max-width: 60%;
+    left: 20%;
+    right: 20%;
+    position: relative;
+    text-align: left;
+    background-color: #2A2A2A;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+.teach h1 {
+    color: #FED401;
+    font-size: 30px;
+}
+.teach h2 {
+    margin-top: 10px;
+    color: #fff;
+    font-size: 20px;
+}
+.teach p {
+    color: #fff;
+    margin-bottom: 3px;
+}
+.teach ul {
+    color: #fff;
+    margin-bottom: 3px;
+}
