@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>final-project-JasonLu</title>
+  <style>
+    html {
+      line-height: 1.7;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 40em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin-top: 1.7em;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.7em;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1.7em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1.7em 0 1.7em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      font-style: italic;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      background-color: #f0f0f0;
+      font-size: 85%;
+      margin: 0;
+      padding: .2em .4em;
+    }
+    pre {
+      line-height: 1.5em;
+      padding: 1em;
+      background-color: #f0f0f0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin-top: 1.7em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+    }
+    th, td {
+      border-bottom: 1px solid lightgray;
+      padding: 1em 3em 1em 0;
+    }
+    header {
+      margin-bottom: 6em;
+      text-align: center;
+    }
+    nav a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<h1 id="numerical-methods-for-solving-optimization-problems">Numerical Methods for Solving Optimization Problems</h1>
+<h2 id="jason-lu">Jason Lu</h2>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li><a href="#Overview">Overview</a>
+<ul>
+<li><a href="#brief-history">Brief History</a></li>
+</ul></li>
+<li><a href="#convexity-in-optimization">Convexity in Optimization</a></li>
+<li><a href="#1-d-optimization-for-nonlinear-optimization-problems">1-D Optimization for Nonlinear Optimization Problems</a>
+<ul>
+<li><a href="#successive-parabolic-interpolation">Successive Parabolic Interpolation</a></li>
+<li><a href="#newtons-method">Newton’s Method</a></li>
+</ul></li>
+<li><a href="unconstrained-optimization">Unconstrained Optimization</a>
+<ul>
+<li><a href="#optimality-conditions-in-unconstrained-optimization">Optimality Conditions in Unconstrained Optimization</a>
+<ul>
+<li><a href="#first-order">First Order</a></li>
+<li><a href="#second-order">Second Order</a></li>
+</ul></li>
+<li><a href="#steepest-descent">Steepest Descent</a></li>
+</ul></li>
+<li><a href="#constrained-optimization">Constrained Optimization</a>
+<ul>
+<li><a href="#optimality-conditions-in-constrained-optimization">Optimality Conditions in Constrained Optimization</a>
+<ul>
+<li><a href="#karush-kuhn-tucker-conditions">Karush-Kuhn-Tucker Conditions</a></li>
+</ul></li>
+<li><a href="#linear-programming">Linear Programming</a>
+<ul>
+<li><a href="#history">History</a></li>
+<li><a href="#lp-example">LP Example</a></li>
+<li><a href="#duality-in-linear-programming">Duality in Linear Programming</a>
+<ul>
+<li><a href="#lp-example-extended-with-duality">LP Example Extended with Duality</a></li>
+</ul></li>
+<li><a href="#simplex-method">Simplex Method</a>
+<ul>
+<li><a href="#simplex-method-example">Simplex Method Example</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#quadratic-programming">Quadratic Programming</a></li>
+<li><a href="#nonlinear-programming-in-constrained-optimization">Nonlinear Programming in Constrained Optimization</a>
+<ul>
+<li><a href="#nonlinear-programming-example">Nonlinear Programming Example</a></li>
+</ul></li>
+<li><a href="#constraint-programming">Constraint Programming</a></li>
+</ul></li>
+<li><a href="#commercial-solvers-in-optimization">Commercial Solvers in Optimization</a></li>
+<li><a href="#references">References</a></li>
+</ol>
+<h2 id="overview">Overview</h2>
+<p>Optimization (also more formally known as mathematical optimization) is, in broad terms, a scientific/engineering discipline where you solve for the best solution out of all possible solutions given an objective and a series of constraints and/or bounds. This involves either finding either the minimum or maximum feasible value for an objective, where the feasibility of the problems lies within the constraints/bounds. This report largely focuses on the conditions surrounding optimization where you solve for optimization problems that minimizes the value of the objective. The maximum optimization problems revolves in similar fashion, just in opposite principles of minimization optimization problems.</p>
+<p>The general purpose of a minimization optimizattion problem is to solve for <span class="math inline">\(x^\*\)</span> based on the following:</p>
+<p><span class="math display">\[f: R^n \to R, S \subseteq R^n\]</span> <span class="math display">\[x^\* \in S\]</span> <span class="math display">\[f(x^\*) \leq f(x) \forall x \in S\]</span></p>
+<p>Where <span class="math inline">\(x^\*\)</span> is the minimum of the function <span class="math inline">\(f\)</span> and <span class="math inline">\(S\)</span> is the feasible region for all values <span class="math inline">\(x\)</span>.</p>
+<p>Convergence to a minimum involves finding the <a href="https://mathworld.wolfram.com/GlobalMinimum.html">global minimum</a> of the feasible region. In functions, there exists both local and global minimums. <a href="https://mathworld.wolfram.com/LocalMinimum.html">Local minimums</a> are minimums within a neighborhood of the position of the local minimum. While the global minimum is the optimal solution, finding global minimums are complicated for optimization methods, particularly in functions where there is more than 1 local or global minimum.</p>
+<p align="center">
+<img src="localvsglobal1_J1oeY7g.png">
+</p>
+<p align="center">
+Figure 1: Local vs. Global Minimums - Source: <a href="https://inverseai.com/blog/gradient-descent-in-machine-learning">Inverse.AI</a>
+</p>
+<p>Optimization problems fall into two categories, <a href="#unconstrained-optimization">unconstrained optimization</a> and <a href="#constrained-optimization">constrained optimization</a>. Unconstrained optimization means that the feasible range for the solution lies within all real numbers of the dimension of the problem, so <span class="math inline">\(S \in R^n\)</span>. Constrained optimization means that there is at least one constraint (in the form of an equation), that restricts the feasible range of solutions.</p>
+<p>Generally, the foundations of optimization problems involve solving continuous problems, where the the functions and function values for the objective and constraints can span all real valued solutions in the feasible region. The form of an optimization problem is defined as:</p>
+<p><span class="math display">\[\min_x \ f(x)\]</span></p>
+<p><span class="math display">\[\text{s.t. } g(x) = 0\]</span></p>
+<p><span class="math display">\[h(x) \leq 0\]</span></p>
+<p><span class="math display">\[x \in R^n\]</span></p>
+<p>This is a mathematical programming formulation, which is the basis formulation for optimization problems. Here, the objective is to find a value <span class="math inline">\(x \in R^n\)</span> that minimizes the function <span class="math inline">\(f(x): R^n \to R\)</span> subject to (s.t.) the following optional constraints: <span class="math inline">\(g(x) = 0\)</span>, which are equality constraints, and <span class="math inline">\(h(x) \leq 0\)</span>, which are inequality constraints. Recall by algebra that inequality signs (greater than or less than) can be easily transformed between one another. <span class="math inline">\(g(x)\)</span> and <span class="math inline">\(h(x)\)</span> are optional as unconstrained optimization problems lie in the whole dimension space and thus are unconstrained.</p>
+<p>Optimization problems are highly applicable to many industries, including healthcare, transportation, energy, manufacturing, etc. Because of its decision-making nature, optimization is very profound in operations research, a field that researches decision making techniques in systematic processes.</p>
+<h3 id="brief-history">Brief History</h3>
+<p>There are several notable mathematicians that contributed to optimization theory and techniques. <a href="https://www.britannica.com/biography/George-Dantzig">George B. Dantzig</a> is largely referred by many as the pioneer of optimization, and has a large influence over the operations research field. He was one of the largest contributers to <a href="#linear-programming">linear programming</a>, an optimization algorithmic technique that serves as a foundation of optimization problem solving. He also developed the <a href="#simplex-method">Simplex method</a> used to solve linear programming problems.</p>
+<h2 id="convexity-in-optimization">Convexity in Optimization</h2>
+<p>For minimization optimization problems, the term “convexity” plays an important role in determining solutions, specifically to determine if the objective <a href="https://math.stackexchange.com/questions/4332759/prove-that-the-function-is-convex">function is convex</a>. This is highly applicable for quadratic and nonlinear programming problems. A convex function is defined as</p>
+<p><span class="math display">\[f(tx_1 + (1-t)x_2) \leq tf(x_1) + (1-t)f(x_2)\]</span></p>
+<p>where <span class="math inline">\(x_1,x_2 \in R^n\)</span>, <span class="math inline">\(f(x): R^n \to R\)</span>, and <span class="math inline">\(t \in [0,1]\)</span>. This ensure that between every point <span class="math inline">\(x_1,x_2\)</span> such that <span class="math inline">\(x_1 \neq x_2\)</span>, the line segment between <span class="math inline">\(x_1,x_2\)</span> is greater than or equal to the function value between <span class="math inline">\([x_1,x_2]\)</span>.</p>
+<p>Convex functions play an important role in minimization optimization problems. If the optimization problem holds the principles of a convex function within it’s feasible space, then any local local minimum of the function is guaranteed to be a global minimum. Thus, there exists an optimal solution to minimization optimization problems. This holds well along with the fact that convex functions are guaranteed to be continuous along the feasible space.</p>
+<p>Some functions can be classified as strictly convex functions. Strictly convex functions are functions defined similarly as convex functions, except that the line segment between any two points <span class="math inline">\(x_1,x_2\)</span> is strictly greater than the function value between <span class="math inline">\([x_1,x_2]\)</span>, exclusive of the points <span class="math inline">\(x_1,x_2\)</span>. Strictly convex functions offer a guaranteed global minimum that is also unique, and thus is a desirable quality for optimization problems.</p>
+<p>If the function is not convex, then there is no guarantee that the optimization problem will converge to the optimal solution, which would create potential issues in many optimization solving techniques.</p>
+<p align="center">
+<img src="convex_function.svg">
+</p>
+<p align="center">
+Figure 2: Convex vs. Non-Convex Functions - Source: <a href="https://fmin.xyz/docs/theory/Convex_function/">fmin.xyz</a>
+</p>
+<p>Note that for maximization optimization problems, instead of convexity, they follow principles that hold <a href="https://mathworld.wolfram.com/ConcaveFunction.html">concave downward</a> properties. This ensures that a solution can be obtained for maximization optimization problems. Minimization optimization problems are actually equivalent to concave upward.</p>
+<h2 id="d-optimization-for-nonlinear-optimization-problems">1-D Optimization for Nonlinear Optimization Problems</h2>
+<p>1-D optimization is the basic dimension of optimization for a function and holds a few key methods for solving them. They are mainly nonlinear in nature, as the methods used to solve them aim to find a minimum not at positive or negative infinity (which would be the case for linear problems). For the following methods, convex functions play an important role in that if the problem is convex, then there is a substantially higher chance that the methods will converge to a minimum.</p>
+<h3 id="successive-parabolic-interpolation">Successive Parabolic Interpolation</h3>
+<p>Successive Parabolic Interpolation is a method to solve 1-D optimization problems that are <a href="https://math.mit.edu/~rmd/465/unimod-dip-bds.pdf">unimodal</a> by fitting a quadratic polynomial to the objective function iteratively until convergence to the optimal solution. As it utilizes the objective function, it’s quicker than methods that only use the function for comparison, such as the <a href="https://mathforcollege.com/nm/mws/gen/09opt/mws_gen_opt_txt_goldensearch.pdf">Golden Section Search</a> method. The fact that the problem is unimodal means that there is only one minimum defined along a specified interval in the problem.</p>
+<p>The Successive Parabolic Interpolation method fits a quadratic polynomial by selecting three points along the function and fitting a quadratic polynomial to the three points, hence why the method is based off of parabolic interpolation, as the polynomial is of degree 2. The minimum of the quadratic polynomial is selected as the estimated minimum of the function. Afterwards, one of the points is replaced. A new quadratic polynomial is interpolated, along with a new estimated minimum of the function according to the polynomial. This proceses iterates until convergence to the minimum of the function.</p>
+<p>While the Successive Parabolic Interpolation method is quicker, it does not guarantee convergence. The method may fail if the quadratic fitting process doesn’t happen close enough to the actual minimum to start with.</p>
+<p align="center">
+<img src="Successive-parabolic-interpolation.png">
+</p>
+<p align="center">
+Figure 3: Visual Demonstration of One Iteration of Successive Parabolic Interpolation - Source: <a href="https://www.researchgate.net/publication/265510511_A_numerical_estimation_method_for_discrete_choice_models_with_non-linear_externalities#pf10">A numerical estimation method for discrete choice models with non-linear externalities</a>
+</p>
+<h3 id="newtons-method">Newton’s Method</h3>
+<p>Newton’s Method is an iterative method for solving 1-D optimization problems makes use of the 1st and 2nd derivatives of the objective function through the Taylor Series: <span class="math display">\[f(x + h) = f(x) + f&#39;(x)h + \frac{f&#39;&#39;(x)h^2}{2!} + ...\]</span></p>
+<p>Iteration comes into play as the method sets every succeeding iterate by minimizing the Taylor approximation to 2nd order derivative with respect to the displacement <span class="math inline">\(h\)</span>. This is done by deriving the Taylor Series, setting it equal to zero, and solving for <span class="math inline">\(h\)</span>: <span class="math display">\[\frac{d}{dh}f(x + h) = f&#39;(x) + f&#39;&#39;(x)h = 0\]</span> <span class="math display">\[h = -\frac{f&#39;(x)}{f&#39;&#39;(x)}\]</span></p>
+<p>So each successive iterate is defined as: <span class="math inline">\(x_{k+1} = x_k - \frac{f&#39;(x)}{f&#39;&#39;(x)}\)</span>. The method iterates a finite number of times until convergence to a minimum. The convergence rate is <a href="https://math.stackexchange.com/questions/3930948/convergence-rate-and-newtons-method">quadratic</a>.</p>
+<pre><code>Set k = 0
+Set M to a value that allows for iteration to convergence
+Initialize value x(0) at random
+while k &lt;= M
+    x(k+1) = x(k) - f&#39;(x)/f&#39;&#39;(x)
+    k = k + 1
+Return x(k+1)</code></pre>
+<p>Like the Successive Parabolic method, Newton’s method holds no guarantee of convergence if the initial starting point is too far away from the global minimum. So the method could fail, especially if the function is not convex and Newton’s method converges to the incorrect value at a local minimum, or even a maximum. Additionally, Newton’s method does require a lot of computational effort during each iteration. Newton’s method can also be applied to unconstrained optimization problems, and is a popular method for <a href="#nonlinear-programming-in-constrained-optimization">nonlinear programming</a>. Alternative versions of Newton’s method like <a href="https://link.springer.com/content/pdf/10.1007/978-0-387-40065-5_6.pdf">Quasi Newton methods</a> exist that are more computationally efficient each iteration.</p>
+<h2 id="unconstrained-optimization">Unconstrained Optimization</h2>
+<p>Simply put it, unconstrained optimization refers to an optimization problems with no hard constraints. So, the feasible solution spans essentially the entire dimension of which the problem is defined.</p>
+<h3 id="optimality-conditions-in-unconstrained-optimization">Optimality Conditions in Unconstrained Optimization</h3>
+<p>The optimality conditions in unconstrained optimization problems serve to validate when an optimal solution has been found. This involves utilizing both first order and second order differentiation of the function, commonly nonlinear, at hand.</p>
+<h4 id="first-order">First Order</h4>
+<p>Consider an objective function <span class="math inline">\(f(x)\)</span>, where <span class="math inline">\(f(x): R^n \to R\)</span> and <span class="math inline">\(x \in R^n\)</span>. The <a href="https://math.stackexchange.com/questions/946640/understanding-what-a-gradient-vector-is">gradient</a> of <span class="math inline">\(f(x)\)</span> is defined as: <span class="math display">\[\nabla f(x) = \frac{d}{dx}f(x)\]</span> This is simply the derivative with respect to the independent variable <span class="math inline">\(x\)</span> across all dimensions of <span class="math inline">\(x\)</span>. A point <span class="math inline">\(x^\*\)</span> where <span class="math inline">\(\nabla f(x^\*) = 0\)</span> is classified as a critical point. If the function <span class="math inline">\(f\)</span> is convex, then by definition of a convex function, critical points are minimums. However, if the function <span class="math inline">\(f\)</span> is not convex, we must look at the second order derivative to classify this, as the critical point could be a minimum, maximum, or other classifications.</p>
+<h4 id="second-order">Second Order</h4>
+<p>If the function <span class="math inline">\(f\)</span> is not convex, then the second order derivative comes into play. For the function <span class="math inline">\(f(x)\)</span>, the <a href="https://machinelearningmastery.com/a-gentle-introduction-to-hessian-matrices/">Hessian matrix</a> of <span class="math inline">\(f\)</span> is defined as: <span class="math display">\[H_f = {\left\lbrack \matrix{\frac{d^2f}{dx_1^2} &amp; \frac{d^2f}{dx_1dx_2} &amp; ... &amp; \frac{d^2f}{dx_1dx_n} \cr \frac{d^2f}{dx_2dx_1} &amp; \frac{d^2f}{dx_2^2} &amp; ... &amp; \frac{d^2f}{dx_2dx_n} \cr ... &amp; ... &amp; ... &amp; ... \cr \frac{d^2f}{dx_ndx_1} &amp; \frac{d^2f}{dx_ndx_2} &amp; ... &amp; \frac{d^2f}{dx_n^2}} \right\rbrack} \]</span></p>
+<p>So, it’s a symmetric <span class="math inline">\(n\)</span> by <span class="math inline">\(n\)</span> matrix where each position corresponds to the derivatives of of the <span class="math inline">\(x\)</span> value at the dimension corresponding to the row placement and the <span class="math inline">\(x\)</span> value at the dimension corresponding to the column placement.</p>
+<p>If the Hessian matrix at <span class="math inline">\(f(x^\*)\)</span> is <a href="https://towardsdatascience.com/what-is-a-positive-definite-matrix-181e24085abd">positive definite</a>, then the critical point <span class="math inline">\(x^\*\)</span> is a minimum of <span class="math inline">\(f(x)\)</span>. And here, we have found a local minimum of <span class="math inline">\(f(x)\)</span>. If the Hessian matrix is negative definite, then <span class="math inline">\(x^\*\)</span> is a maximum of <span class="math inline">\(f(x)\)</span>. Otherwise, it’s something else (saddle point, etc.). So for non-convex functions, it is evident that the second order derivative through the Hessian matrix gets taken into account to correctly classify critical points and thus determine optimal conditions.</p>
+<h3 id="steepest-descent">Steepest Descent</h3>
+<p>Steepest Descent is a common method used to find solutions to unconstrained optimization problems. Recall the gradient of a function <span class="math inline">\(\nabla f(x)\)</span>. The gradient points in the direction of greatest increase of the function. Inversely <span class="math inline">\(-\nabla f(x)\)</span> points in the direction of greatest decrease of the function. Therefore, traveling from a point towards the direction of the negative gradient gets closer to the minimum.</p>
+<p>So, it is evident that traveling in the negative gradient direction brings the solution closer to the minimum. However, Steepest Descent must also take into account how far to travel in the negative gradient direction. This involves traveling along the negative gradient by a factor of a constant <span class="math inline">\(a\)</span>, which is determined from a 1-D optimization of <span class="math inline">\(f\)</span> along <span class="math inline">\(-\nabla f(x)\)</span>. This value is chosen carefully, as travelling too far along a gradient could risk in overstepping the optimal solution, which would require backtracking through additional unnecessary iterations to move back towards the optimal solution. Travelling very little along a gradient would results in slow convergence to the optimal solution.</p>
+<p>The Steepest Descent method is undertaken as follows:</p>
+<pre><code>set k = 0
+Initialize value x(0) at random
+while |- gradient of x(k)| &gt; e
+    x(k+1) = x(k) - a * gradient of x(k)
+    k = k + 1
+Return x(k)</code></pre>
+<p>The Steepest Descent method always makes progress towards a minimum, making it a reliable method. It’s also generally faster than <a href="https://www.sciencedirect.com/science/article/pii/S0377042700004234">direct search methods</a>, which do not make use of the objective functioon. However, depending on the nature of the problem, the convergence of Steepest Descent could be very slow. For a two-dimensional problem for example, If <span class="math inline">\(-\nabla f(x)\)</span> leans vertical, then the horizontal magnitude of travel along the gradient towards the minimum would be minimal to ensure you don’t travel too far away from the minimum. This results in many iterations of small travel distances and thus slow convergence.</p>
+<h2 id="constrained-optimization">Constrained Optimization</h2>
+<p>Constrained optimization problems are problems where there exists at least one constraint, which restricts the feasible space of the problem from the dimension to which it is defined. This makes the scope of these problems narrower than those of unconstrained optimization problems through additional bounding of the feasible region.</p>
+<h3 id="optimality-conditions-in-constrained-optimization">Optimality Conditions in Constrained Optimization</h3>
+<p>Optimality for unconstrained optimization usually happens at critical points as discussed in <a href="#optimality-conditions-in-unconstrained-optimization">Unconstrained Optimality Conditions</a>. Constrained optimization problems can be both linear or nonlinear. The optimality conditions of unconstrained optimization still hold for constrained optimization. However, optimality conditions for constrained optimization tends to occur at the borders of feasible regions.</p>
+<p>Because of the fact that optimal solutions tend to occur at feasible region borders, optimal conditions must consider feasible directions to avoid going outside of the feasible region. For minimization problems, this is given by:</p>
+<p><span class="math display">\[\nabla f(x^\*)^Ts \geq 0\]</span></p>
+<p>Where <span class="math inline">\(s\)</span> is a feasible direction from <span class="math inline">\(x^\*\)</span>. Similarly, <span class="math display">\[s^TH(x^\*)s \geq 0\]</span></p>
+<p>Which says that the Hessian at the optimal solution is positive semi-definite in a feasible direction.</p>
+<p>Conditions for the constraints come from the Lagrangian function, which is given by:</p>
+<p><span class="math display">\[L(x,\lambda) = f(x) + \lambda^Tg(x)\]</span></p>
+<p>Where <span class="math inline">\(g(x)\)</span> are the equality constraints to the optimization problem, and <span class="math inline">\(\lambda\)</span> makes up a vector of Lagrange multipliers that’s of same length as the number of constraints. The Lagrangian function is a very important factor for constrained optimization. The goal is to find the critical point of the Lagrangian function, which is given by the gradient of the Lagrange function <span class="math inline">\(\nabla L(x,\lambda)\)</span>. This must be equal to 0:</p>
+<p><span class="math display">\[\nabla L(x,\lambda) = \nabla f(x) + J_g^T(x)\lambda = 0\]</span></p>
+<p>The Lagrangian function gradient is given by the gradient of the objective function <span class="math inline">\((f(x))\)</span> plus the Jacobian matrix of the constraints <span class="math inline">\((J_g^T(x))\)</span> multiplied with the Lagrange multipliers <span class="math inline">\((\lambda)\)</span>. These serve as conditions for the critical point of the Lagrange function. Additionally, the constraints should also be set equal to 0:</p>
+<p><span class="math display">\[g(x) = 0\]</span></p>
+<p>Confirming the optimality of the the Lagrange critical point involves, in a similar manner to unconstrained optimality conditions, finding the Hessian of the objective function and the constraints. However, for constrained optimization, classifying the critical point is more complicated and is beyond the scope of this report.</p>
+<p>Note that the Lagrangian function and multipliers under these conditions can only be applied to equality constraints. To handle inequality constraints, Karush-Kuhn-Tucker Conditions must be in place.</p>
+<h4 id="karush-kuhn-tucker-conditions">Karush-Kuhn-Tucker Conditions</h4>
+<p>The Karush-Kuhn-Tucker (KKT) Conditions, which are named after <a href="https://www.math.princeton.edu/people/harold-w-kuhn">Harold Kuhn</a> and <a href="https://www.informs.org/Explore/History-of-O.R.-Excellence/Biographical-Profiles/Tucker-Albert-W">Albert Tucker</a>, are a series of first-order derivative tests to ensure optimality for nonlinear constrained optimization problems. These conditions take place especially when inequality constraints are present, as the Lagrange multipliers only account for equality constraints. KKT conditions extend problems to allow for inequality constraints <span class="math inline">\(h(x) \leq 0\)</span>.</p>
+<p>The KKT connditions for constrained optimization at an optimal value are as follows: 1. Feasibility of the equality constraints: <span class="math inline">\(g(x^\*) = 0\)</span> 2. Feasibility of the inequality constraints: <span class="math inline">\(h(x^\*) \leq 0\)</span> 3. Complementary slackness condition that when an inequality constraint is active, then it equals 0, otherwise the corresponding Lagrange multiplier is 0: <span class="math inline">\(h_i(x^\*)\lambda_i^\* = 0\)</span> for any inequality constraint <span class="math inline">\(i\)</span>. 4. Positive lagrange multipliers: <span class="math inline">\(\lambda^\* \geq 0\)</span></p>
+<p>Later in this report, <a href="#nonlinear-programming-example">Nonlinear Programming Example</a> demonstrates the KKT conditions applied to nonlinear optimization.</p>
+<h3 id="linear-programming">Linear Programming</h3>
+<p>Linear Programming (LP) is the standard optimization method used to solve linear optimization problems. For LP, the objective and constraints of an optimization problem are both linear (only containing linear terms).</p>
+<p>The general LP formulation for a minimization optimization problem is as follows: <span class="math display">\[\min_x c^T x\]</span> <span class="math display">\[\text{s.t. } Ax \geq b\]</span> <span class="math display">\[x \geq 0\]</span></p>
+<p>Where we minimize the objective function <span class="math inline">\(c^Tx: R^n \to R\)</span> with respect to the independent variable <span class="math inline">\(x \in R^n\)</span>. This is subject to (s.t.) the constraints <span class="math inline">\(Ax \geq b\)</span>. This represents a system of equations, where each equation represents a constraint. <span class="math inline">\(A \in R^{m \times n}\)</span> is the constraint matrix that has <span class="math inline">\(m\)</span> constraints and matches the dimension <span class="math inline">\(n\)</span> of <span class="math inline">\(x\)</span>. The vector <span class="math inline">\(b \in R^m\)</span> finishes the constraints by bounding each constraint equation. The <span class="math inline">\(x \geq 0\)</span> constraints satisfies non-negativity, as feasibility for most LP problems find non-negative optimal solutions. Notice that the objective function and constraints are all linear. LP problems are generally constrained. If they were unconstrained, then optimal values would be at an infinite value.</p>
+<h4 id="history">History</h4>
+<p>George Dantzig was one of the creators of LP and developed several methods, including the Simplex Method, to solve linear programming problems. Within the last century, more advanced methodologies were created to solve LP problems that are commonly used in modern applied optimization research. This includes <a href="https://doi.org/10.1016/j.ejor.2016.12.005">Benders’ Decomposition</a>, which was discovered by Jacques F. Benders, and <a href="https://doi.org/10.1007/bf01589355">Dantzig-Wolfe Decomposition</a>, which was discovered by George Dantzig and Philip Wolfe. Going into these methods is beyond the scope of this report. However, it is worth noting that what makes these methods useful is their ability to handle large-scale problems.</p>
+<h4 id="lp-example">LP Example</h4>
+<p>Here is an example of a relatively simple LP problem: <span class="math display">\[\min 4x_1 + 3x_2\]</span> <span class="math display">\[\text{s.t. } x_1 + 2x_2 \geq 20\]</span> <span class="math display">\[x_1 \geq 0, x_2 \geq 0\]</span></p>
+<p>Solving this problem yields an optimal minimum of <span class="math inline">\(x_1=0,x_2=10\)</span> with value 30.</p>
+<h4 id="duality-in-linear-programming">Duality in Linear Programming</h4>
+<p>An important concept in optimization is the principle of duality. The basis LP problem is written in the primal, which is essentially the primary version LP from the optimization problem. The dual problem, in simple terms, is the inverse of the primal. It turns minimization LPs into maximization LPs, and vice versa. The dual is important for solving optimization LP problems, especially for more complex techniques. For example, the <a href="#simplex-method">Simplex method</a> only works on maximization functions. So for minimization problems, obtaining the dual would allow for proper processing in the Simplex Method. Another purpose of the dual is it’s usage for <a href="https://math.stackexchange.com/questions/91504/shadow-prices-in-linear-programming">shadow pricing</a>, which essentially is a sensitivity analysis on how the decision variables would change the solution.</p>
+<p>Finding the dual of a primal involves two overarching steps: 1. Setting the objectives of the primal as the constraints of the dual, as well as the constraints of the primal as the objectives of the dual. 2. Transforming the constraint coefficients of primal in a way to reflect the new objective and constraints of the dual. 3. The final dual will be an inverse of the primal. The number of decision variables in the dual should match the number of constraints in the primal.</p>
+<p>The general dual of a primal LP formulation for a minimization optimization problem is as follows: <span class="math display">\[\max_y b^Ty\]</span> <span class="math display">\[\text{s.t. } A^Ty \leq c\]</span> <span class="math display">\[y \geq 0\]</span></p>
+<p>Where we maximize the new objective <span class="math inline">\(b^Ty\)</span> with respect to the independent variable <span class="math inline">\(y\)</span>. The decision variable <span class="math inline">\(y\)</span> is denoted to distinguish the variables in the dual as the inverse of the primal. The matrix A transforms by transposing it to match the new constraints, which follow the coefficients of the primal objective. Non-negativity for the new decision variable still holds. As with the LP, the dual objective and constraints remain linear.</p>
+<h5 id="lp-example-extended-with-duality">LP Example Extended with Duality</h5>
+<p>Consider an extension of the <a href="#lp-example">LP example</a>. The following transforms the LP example into its dual. 1. Coefficients of the objective function are <span class="math inline">\(c = [4,3]\)</span>, these are set as the constraints. The constraints are b = [20], this is set as the objective. The objective is therefore <span class="math inline">\(\max 20y_1\)</span>, and the right side of the constraints are <span class="math inline">\(\leq 4\)</span> and <span class="math inline">\(\leq 3\)</span>, the signs are inverted in the dual. The decision variable is denoted as <span class="math inline">\(y_1\)</span> to distinguish it in the dual as inverse of the primal. 2. The constraint matrix is <span class="math inline">\(A=[1,2]\)</span>. For this basic example, the dual constraint matrix is obtained by transposing <span class="math inline">\(A\)</span>, so the new constraint matrix is <span class="math inline">\([2,1]^T\)</span>. 3. Non-negativity constraints for the dual remain, so <span class="math inline">\(y_1 \geq 0\)</span>.</p>
+<p>Overall, this yields the dual formulation:</p>
+<p><span class="math display">\[\max 20y_{1}\]</span></p>
+<p><span class="math display">\[\text{s.t. } y_1 \leq 4\]</span></p>
+<p><span class="math display">\[2y_1 \leq 3\]</span></p>
+<p><span class="math display">\[y_1 \geq 0\]</span></p>
+<p>Solving the dual yields an optimal solution of <span class="math inline">\(y_1 = \frac{3}{2}\)</span> with value 30. This matches the same objective value from the primal.</p>
+<h4 id="simplex-method">Simplex Method</h4>
+<p>The Simplex Method is the fundamental algorithm used to solve LP problems. The main assumption made by the Simplex method is that the optimal solution is at one of the vertices of the feasible region. The algorithm methodically iterates over the vertices of the feasible space until the optimal solution is found and validated.</p>
+<p>In order for the Simplex method to work, the LP must be in standard form as follows: * Maximization objective function * Variables must be on left hand side of the system of equation constraints * All constraints must be equality constraints * Constraints on the right hand side must be non-negative * All variables must hold non-negativity constraint</p>
+<p><span class="math display">\[\max z = c^Tx\]</span> <span class="math display">\[\text{s.t. } Ax = b\]</span> <span class="math display">\[x \geq 0\]</span></p>
+<p>If the LP is not in standard form, it can be manipulated into standard form. When changing <span class="math inline">\(\geq\)</span> or <span class="math inline">\(\leq\)</span> constraints into <span class="math inline">\(=\)</span> constraints, the constraints get an additional slack variable for <span class="math inline">\(\geq\)</span> constraints and excess variable for <span class="math inline">\(\leq\)</span> constraints.</p>
+<p>Adding a slack variable is shown below: <span class="math display">\[x_1 + x_2 \leq C\]</span> <span class="math display">\[x_1 + x_2 + s_1 = C\]</span></p>
+<p>Adding an excess variable is shown below: <span class="math display">\[x_1 + x_2 \geq C\]</span> <span class="math display">\[x_1 + x_2 - e_1 = C\]</span></p>
+<p>Note that both slack and excess variables are required to be non-negative to satisfy standard form LP for Simplex method.</p>
+<p>In standard form, the LP has <span class="math inline">\(n\)</span> variables and <span class="math inline">\(m\)</span> constraints. From these, there are <span class="math inline">\(n-m\)</span> nonbasic variables. Additionally, there are <span class="math inline">\(m\)</span> basic variables that form the basis. The nonbasic variables are set equal to 0, and then the remaining basic variables are systematically solved as a system of linear equations, which can be solved using <a href="https://mathworld.wolfram.com/GaussianElimination.html">Gaussian Elimination</a>. If the m basic variables are non-negative, then the solution is considered a basic feasible solution.</p>
+<p>The start of the Simplex Method sets the slack and excess variables as the basic variables forming the basis. The original set of variables are set as the nonbasic variables in the objective function with the solution <span class="math inline">\(Z\)</span> is set to 0. The objective function and constraints are formed into a Simplex Dictionary, which sets up a system of linear equations. In the dictionary, the constraint equations are set equal to the basic variables and the objective is set in terms of the nonbasic variables. At each round, one basic variable leaves the basis (becoming a nonbasic variable) and one nonbasic variable enters the basis (becoming a basic variable). After which, substitution and linear system solving takes place such that, in the basis, the basic variables are set equal to constants and nonbasic variable terms. Nonbasic variables appear in the objective equation and hold a value of 0 while they are there. This is done repeatedly until the algorithm terminates at an optimal solution when all the nonbasic variable coefficients of that iteration are non-positive. <a href="#simplex-method-example">Simplex Method Example</a> shows an example of the Simplex method.</p>
+<p>There are a few edge cases which may slow down the Simplex Method towards convergence of an optimal solution. One such case is when the LP is <a href="https://www.oreilly.com/library/view/quantitative-techniques-theory/9789332512085/xhtml/ch3sec5.xhtml">degenerate</a>, which means that in a basic feasible solution, one of the basic variables is set equal to 0. This could cause the Simplex algorithm to slow significantly. Other edge cases that affect the Simplex method include LPs with more than 1 optimal solution and unbounded LPs.</p>
+<h5 id="simplex-method-example">Simplex Method Example</h5>
+<p>Consider the following maximization LP: <span class="math display">\[\max z = 3x_1 + 4x_2\]</span> <span class="math display">\[\text{s.t. } -x_1 + x_2 \leq 4\]</span> <span class="math display">\[x_1 + 2x_2 \leq 30\]</span> <span class="math display">\[x_1 \leq 15\]</span> <span class="math display">\[x_1,x_2 \geq 0\]</span></p>
+<p>Now changing to standard form by adding slack variables to form equality constraints: <span class="math display">\[\max z = 3x_1 + 4x_2\]</span> <span class="math display">\[\text{s.t. } -x_1 + x_2 + s_1 = 4\]</span> <span class="math display">\[x_1 + 2x_2 + s_2 = 30\]</span> <span class="math display">\[x_1 + s_3 = 15\]</span> <span class="math display">\[x_1,x_2,s_1,s_2,s_3 \geq 0\]</span></p>
+<p>It’s best to showcase the Simplex method when the LP is in dictionary form. This means that the constraints are set equal to the basic variables, and the objective function is set equal to the objective value <span class="math inline">\(Z\)</span>. The initial dictionary is formed for the problem: <span class="math display">\[s_1 = 4 + x_1 - x_2\]</span> <span class="math display">\[s_2 = 30 - x_1 - 3x_2\]</span> <span class="math display">\[s_3 = 15 - x_1\]</span> <span class="math display">\[z = 0 + 3x_1 + 4x_2\]</span></p>
+<p>Current solution is <span class="math inline">\(z=0\)</span> at <span class="math inline">\((x_1,x_2) = (0,0)\)</span></p>
+<p>Now <span class="math inline">\(x_2\)</span> enters the basis and <span class="math inline">\(s_1\)</span> leaves the basis: <span class="math display">\[x_2 = 4 + x_1 - s_1\]</span> <span class="math display">\[s_2 = 22 - 3x_1 + 2s_1\]</span> <span class="math display">\[s_3 = 15 - x_1\]</span> <span class="math display">\[z = 16 + 7x_1 - 4s_1\]</span></p>
+<p>Current solution is <span class="math inline">\(z=16\)</span> at <span class="math inline">\((x_1,x_2) = (0,4)\)</span></p>
+<p>Now <span class="math inline">\(x_1\)</span> enters the basis and <span class="math inline">\(s_2\)</span> leaves the basis: <span class="math display">\[x_2 = \frac{34}{3} - \frac{1}{3}s_1 - \frac{1}{3}s_2\]</span> <span class="math display">\[x_1 = \frac{22}{3} + \frac{2}{3}s_1 - \frac{1}{3}s_2\]</span> <span class="math display">\[s_3 = \frac{23}{3} - \frac{2}{3}s_1 + \frac{1}{3}s_2\]</span> <span class="math display">\[z = \frac{202}{3} + \frac{2}{3}s_1 - \frac{7}{3}s_2\]</span></p>
+<p>Current solution is <span class="math inline">\(z=\frac{202}{3}\)</span> at <span class="math inline">\((x_1,x_2) = (\frac{22}{3},\frac{34}{3})\)</span></p>
+<p>Now <span class="math inline">\(s_1\)</span> enters the basis and <span class="math inline">\(s_3\)</span> leaves the basis: <span class="math display">\[x_2 = \frac{15}{2} + \frac{1}{2}s_3 - \frac{1}{2}s_2\]</span> <span class="math display">\[x_1 = 15 - s_3\]</span> <span class="math display">\[s_1 = \frac{23}{2} - \frac{3}{2}s_3 + \frac{1}{2}s_2\]</span> <span class="math display">\[z = 75 - s_3 - 2s_2\]</span></p>
+<p>This is the optimal solution: <span class="math inline">\(z=75\)</span> at <span class="math inline">\((x_1,x_2) = (15,\frac{15}{2})\)</span>. Notice how the nonbasic variable coefficients are non-positive.</p>
+<h3 id="quadratic-programming">Quadratic Programming</h3>
+<p>Quadratic Programming (QP) holds several similarities with LP, except that the objective function is quadratic (and thus nonlinear). The constraints remain linear. This is a basic form of nonlinear programming.</p>
+<p>Solving QP problems is simpler when there are only equality constraints involve. This involves utilizing the Lagrangian function <span class="math inline">\(L(x,\lambda)\)</span>. Based on optimality conditions, <span class="math inline">\(\nabla L(x,\lambda)\)</span> as well as the constraints must both be set equal to 0. This sets up a system of linear equations among the gradient and the constraints. Solving this system yields the optimal solution for the quadratic programming problem.</p>
+<p>Sequential Quadratic Programming is a notable method used to solve more complex nonlinear optimization problems. Essentially, it applies <a href="#newtons-method">Newton’s Method</a> to <span class="math inline">\(\nabla L(x,\lambda)\)</span> and solves the optimization problem through a series of QP calculations. There are numerous ways to solve the QP calculations, including Range-space method and Null-space method. While both of which are out of scope for this report, they are useful for handling complex problems.</p>
+<h3 id="nonlinear-programming-in-constrained-optimization">Nonlinear Programming in Constrained Optimization</h3>
+<p>Nonlinear programming problems are in the general form below, for a minimization problem:</p>
+<p><span class="math display">\[\min f(x)\]</span> <span class="math display">\[\text{s.t. } g(x) \geq b\]</span> Where at least the objective function <span class="math inline">\(f(x)\)</span> or one of the constraints is nonlinear. Linear constraints and objective functions can still be present.</p>
+<p>Multiple methods discussed in this report are used to solve nonlinear programming problems, with the more common ones being <a href="#newtons-method">Newton’s Method</a> and <a href="#steepest-descent">Steepest Descent</a>. While these were described under unconstrained optimization conditions, they also work in constrained circumstances too and can likely even converge better due to having a narrower feasible region. To showcase how KKT conditions and the Lagrangian function play in the role of nonlinear programming, <a href="#nonlinear-programming-example">Nonlinear Programming Example</a> demonstrates an example for solving nonlinear programming problems.</p>
+<h4 id="nonlinear-programming-example">Nonlinear Programming Example</h4>
+<p>Consider the following nonlinear optimization problem (for a maximization problem): <span class="math display">\[\max 2x_1^2 + 2x_1x_2\]</span> <span class="math display">\[\text{s.t. } x_1^2 - x_2 \leq 5\]</span> <span class="math display">\[x_2 \leq 3\]</span></p>
+<p>The Lagrangian function is given by: <span class="math inline">\(L(x_1,x_2,\lambda_1,\lambda_2) = 2x_1^2 + 2x_1x_2 - \lambda_1(x_1^2 - x_2 - 5) - \lambda_2(x_2 - 3)\)</span></p>
+<p>The KKT conditions are given by: <span class="math display">\[\frac{dL}{d x_1} = 4x_1 + 2x_2 - 2x_1\lambda_1 = 0\]</span> <span class="math display">\[\frac{dL}{d x_2} = 2x_1 + \lambda_1 - \lambda_2 = 0\]</span> <span class="math display">\[\lambda_1(x_1^2 - x_2 - 5) = 0\]</span> <span class="math display">\[\lambda_2(x_2 - 3) = 0\]</span> <span class="math display">\[\lambda_1,\lambda_2 \geq 0\]</span></p>
+<p>In this problem, there are four possible ways to go find feasible points and then eventually arrive at the optimal solution:</p>
+<p>Case 1: Both constraints are inactive: <span class="math inline">\(\lambda_1,\lambda_2 \geq 0\)</span>.</p>
+<p>This means <span class="math inline">\(x_2 = 3\)</span> and <span class="math inline">\(x_1 = \mp 2\sqrt{2}\)</span>. However, when <span class="math inline">\(x_1 = -2\sqrt{2}\)</span>, <span class="math inline">\(\lambda_2\)</span> is negative which violates conditions. So a feasible solution lies at <span class="math inline">\((2\sqrt{2},3)\)</span> with objective value <span class="math inline">\(16 + 12\sqrt{2}\)</span>.</p>
+<p>Case 2: Both constraints are inactive: <span class="math inline">\(\lambda_1,\lambda_2 = 0\)</span>.</p>
+<p>This means <span class="math inline">\(x_1,x_2\)</span> both equal 0 and the objective value is 0. Case one has a greater feasible objective value, so this is not optimal.</p>
+<p>Case 3: <span class="math inline">\(x_2 \leq 3\)</span> constraint active: <span class="math inline">\(\lambda_1 = 0\)</span>, <span class="math inline">\(\lambda_2 &gt; 0\)</span>.</p>
+<p>This means <span class="math inline">\(x_1 = -\frac{3}{2}\)</span> and <span class="math inline">\(x_2 = 3\)</span>. However, the resulting <span class="math inline">\(\lambda_2\)</span> is negative, violating conditions and this point is not feasible.</p>
+<p>Case 4: <span class="math inline">\(x_1^2 - x_2 \leq 5\)</span> constraint active: <span class="math inline">\(\lambda_1 &gt; 0\)</span>, <span class="math inline">\(\lambda_2 = 0\)</span>. This means either <span class="math inline">\(x_1 = 1\)</span> and <span class="math inline">\(x_2 = 4\)</span> or <span class="math inline">\(x_1 = -\frac{5}{3}\)</span> and <span class="math inline">\(x_2 = -\frac{20}{9}\)</span>. If <span class="math inline">\(x_1 = 1\)</span> and <span class="math inline">\(x_2 = 4\)</span>, then <span class="math inline">\(\lambda_1\)</span> is negative and the KKT conditions are violated, so this point is not feasible. <span class="math inline">\(x_1 = -\frac{5}{3}\)</span> and <span class="math inline">\(x_2 = -\frac{20}{9}\)</span> is feasible as no conditions are violated. However, with an objective value of <span class="math inline">\(\frac{310}{27}\)</span>, case 1 has a greater objective so this is not optimal.</p>
+<p>After evaluation, the optimal solution is <span class="math inline">\((x_1,x_2) = (2\sqrt{2},3)\)</span> with objective value <span class="math inline">\(16 + 12\sqrt{2}\)</span>.</p>
+<h3 id="constraint-programming">Constraint Programming</h3>
+<p>In a more advanced but interesting topic that this report will overview at a high level, Constraint Programming (CP) is an optimization method used to solve combinatorial optimization problems. Unlike other optimization problems which seek to find an optimal solution from searching the feasible region, CP focuses on the constraints of the problem. From the dimension space of the problem, CP reduces the scope of the problem down to a feasible region through the constraints and prunes the search space by eliminating solutions through the constraints. Because of this, problems formulated in CP could have more than one solution considered optimal.</p>
+<p>Due to its nature of assigning decision variables values after finding the feasible space, CP problems are mainly discrete, and widely used in routing and scheduling problems.</p>
+<h2 id="commercial-solvers-in-optimization">Commercial Solvers in Optimization</h2>
+<p>To handle the large scale optimization problems seen in research, several commerical solvers are widely used. <a href="https://www.gurobi.com">Gurobi</a> is one of the most well-known solvers used to solve computational optimization problems, especially in linear programming. Other famous solvers include <a href="https://www.wolfram.com/mathematica/">Mathematica</a> and <a href="https://www.ibm.com/products/ilog-cplex-optimization-studio/cplex-optimizer">CPLEX</a>. <a href="https://www.ibm.com/products/ilog-cplex-optimization-studio/cplex-optimizer">CPLEX</a> is well known for its ability to handle very large optimization problems.</p>
+<h2 id="references">References</h2>
+<ol type="1">
+<li>Bertsekas, D. P. (1996). Introduction. In Constrained Optimization and Lagrange multiplier methods. essay, Athena scientific.</li>
+<li>Bertsekas, D. P. (2016). Unconstrained Optimization. In Nonlinear programming. essay, Athena Scientific.</li>
+<li>Gass, S. I. (2011). George B. Dantzig. International Series in Operations Research &amp; Management Science, 217–240. https://doi.org/10.1007/978-1-4419-6281-2_13</li>
+<li>Heath, M. T. (2018). Optimization. In Scientific computing: An introductory survey. essay, Society for Industrial and Applied Mathematics.</li>
+<li>Karloff, H. (2009). The simplex algorithm. Linear Programming, 23–47. https://doi.org/10.1007/978-0-8176-4844-2_2</li>
+<li>Lixin, C., Congxin, W., Xiaoping, X., &amp; Xiabo, Y. (1998). Convex functions, subdifferentiability and renormings. Acta Mathematica Sinica, 14(1), 47–56. https://doi.org/10.1007/bf02563883</li>
+<li>Rossi, F. (n.d.). Uncertainty and Change. In Handbook of Constraint Programming. essay, Elsevier.</li>
+<li>Winston, W. L., &amp; Venkataramanan, M. (2010). Introduction to Linear Programming. In Introduction to mathematical programming: Operations research: Volume 1. essay, Thomson-Brooks/Cole.</li>
+</ol>
+</body>
+</html>
