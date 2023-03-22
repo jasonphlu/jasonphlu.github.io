@@ -11,10 +11,15 @@
 }
 .teach h1 {
     color: #FED401;
-    font-size: 30px;
+    font-size: 35px;
 }
 .teach h2 {
     margin-top: 10px;
+    color: #FED401;
+    font-size: 25px;
+}
+.teach h3 {
+    margin-top: 5px;
     color: #fff;
     font-size: 20px;
 }
