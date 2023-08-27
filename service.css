@@ -1,0 +1,33 @@
+.service {
+    max-width: 60%;
+    left: 20%;
+    right: 20%;
+    position: relative;
+    text-align: left;
+    background-color: #2A2A2A;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+.service h1 {
+    color: #FED401;
+    font-size: 35px;
+}
+.service h2 {
+    margin-top: 10px;
+    color: #FED401;
+    font-size: 25px;
+}
+.service h3 {
+    margin-top: 5px;
+    color: #fff;
+    font-size: 20px;
+}
+.service p {
+    color: #fff;
+    margin-bottom: 3px;
+}
+.service ul {
+    color: #fff;
+    margin-bottom: 3px;
+}

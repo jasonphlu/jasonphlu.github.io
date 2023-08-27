@@ -20,44 +20,35 @@ body {
 .navbar-collapse {
     justify-content: flex-end;
 }
-.description {
-    position: relative;
-    padding-top: 50px;
-    left: 10%;
-    max-width: 50%;
-    top: 12%;
-    text-align: left;
+.description:after {
+    content: "";
+    display: table;
+    clear: both;
 }
-.description h1 {
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+.column h1 {
     color: #FED401;
 }
-.description p {
+.column h2 {
+    color: #FED401;
+}
+.column p {
     color: #fff;
     font-size: 1.3rem;
     line-height: 1.5;
 }
-.pfp {
-    left: 61%;
-    position: absolute;
-    top: 20%;
+.column img {
+    padding-top: 52px;
+    max-width:70%;
+    max-height:70%;
+    padding-bottom: 10px;
 }
-.pfp img {
-    width: 60%;
-    height: 60%;
-}
-.coursework {
-    padding-top: 20px;
+.column ul {
+    padding-top: 0px;
     color: #fff;
-    left: 10%;
-    max-width: 50%;
-    position: relative;
-    text-align: left;
-}
-.coursework p {
     font-size: 1.3rem;
-    color: #fff;
-
-}
-.coursework ul {
-    font-size: 1rem;
 }
