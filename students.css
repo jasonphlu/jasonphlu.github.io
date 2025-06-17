@@ -1,0 +1,62 @@
+.students {
+    max-width: 80%;
+    left: 10%;
+    right: 10%;
+    position: relative;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.students h1 {
+    color: #FED401;
+    font-size: 2rem;
+}
+.students h2 {
+    color: #fff;
+    font-size: 1.5rem;
+}
+.students p {
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.students ul {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-top: -16px;
+}
+.statement {
+    max-width: 80%;
+    left: 10%;
+    right: 10%;
+    position: relative;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+.statement p {
+    color: #fff;
+    font-size: 1.1rem;
+}
+.statement h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-style: bold;
+}
+.students figure{
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+.students img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.students figcaption {
+  color: #fff;
+  font-size: 12px;
+  font-style: italic;
+  text-align: center;
+}
