@@ -53,6 +53,10 @@ body {
     font-size: 1.3rem;
 }
 
+.column img {
+    width: 50%;
+}
+
 .fullwidth {
     float: left;
     padding: 10px;
