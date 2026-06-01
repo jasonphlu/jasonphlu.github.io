@@ -44,3 +44,33 @@
   font-style: italic;
   text-align: center;
 }
+
+/* --- Badge Styles --- */
+.badge-placement, .badge-honor {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 8px;
+    margin-right: 8px;
+}
+
+/* Grey badge for placements */
+.badge-placement {
+    background-color: #f0f0f0;
+    color: #555;
+    border: 1px solid #ddd;
+}
+
+/* Gold/Yellow badge for fellowships (matches your accent) */
+.badge-honor {
+    background-color: #fff9db; /* Light yellow */
+    color: #856404; /* Darker brown/gold text for readability */
+    border: 1px solid #FED401;
+}
+
+/* Icon spacing */
+.badge-placement i, .badge-honor i {
+    margin-right: 5px;
+}

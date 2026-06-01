@@ -66,3 +66,21 @@
 .research paper:hover {
     box-shadow: 0 8px 15px rgba(0,0,0,0.05); /* Lifts on hover */
 }
+
+.btn-paper {
+    display: inline-block;
+    padding: 2px 10px;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #00274C; /* Navy */
+    border: 1px solid #00274C;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-paper:hover {
+    background-color: #00274C;
+    color: #fff;
+    text-decoration: none;
+}
