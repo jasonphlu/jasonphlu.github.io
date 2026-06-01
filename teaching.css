@@ -1,33 +1,32 @@
 .teach {
-    max-width: 60%;
-    left: 20%;
-    right: 20%;
+    max-width: 80%;
+    left: 10%;
+    right: 10%;
     position: relative;
     text-align: left;
-    background-color: #2A2A2A;
     margin-bottom: 10px;
     margin-top: 10px;
-    padding: 10px;
+    color: #000;
 }
 .teach h1 {
-    color: #FED401;
     font-size: 35px;
+    color: #00274C !important; /* Michigan Blue or a strong Navy */
+    border-bottom: 2px solid #FED401; /* Keeps your yellow as a stylish accent line */
+    padding-bottom: 5px;
+    margin-top: 40px;
 }
 .teach h2 {
     margin-top: 10px;
-    color: #FED401;
     font-size: 25px;
+    color: #333 !important;
 }
 .teach h3 {
     margin-top: 5px;
-    color: #fff;
     font-size: 20px;
 }
 .teach p {
-    color: #fff;
     margin-bottom: 3px;
 }
 .teach ul {
-    color: #fff;
     margin-bottom: 3px;
 }

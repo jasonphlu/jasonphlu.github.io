@@ -6,54 +6,36 @@
     text-align: left;
     margin-bottom: 10px;
     margin-top: 10px;
+    color: #000;
 }
 .research h1 {
-    color: #FED401;
     font-size: 2rem;
+    color: #00274C !important; /* Michigan Blue or a strong Navy */
+    border-bottom: 2px solid #FED401; /* Keeps your yellow as a stylish accent line */
+    padding-bottom: 5px;
+    margin-top: 40px;
 }
 .research h2 {
-    color: #fff;
     font-size: 1.5rem;
+    color: #333 !important;
 }
 .research h3 {
-    color: #fff;
     font-size: 1.3rem;
 }
 .research p {
-    color: #fff;
     font-size: 1.1rem;
 }
 .research paper {
     display: block;
-    color: #fff;
     font-size: 1.25rem;
     margin-bottom: 15px;
     margin-left: 40px;
 }
 
 .research ul {
-    color: #fff;
     font-size: 1.1rem;
 }
-.statement {
-    max-width: 80%;
-    left: 10%;
-    right: 10%;
-    position: relative;
-    text-align: left;
-    margin-bottom: 10px;
-    margin-top: 10px;
 
-}
-.statement p {
-    color: #fff;
-    font-size: 1.1rem;
-}
-.statement h1 {
-    color: #fff;
-    font-size: 1.5rem;
-    font-style: bold;
-}
 .research figure{
     margin-top: 10px;
     margin-bottom: 3px;
@@ -65,8 +47,22 @@
   width: 50%;
 }
 .research figcaption {
-  color: #fff;
+  color: #555;
   font-size: 12px;
   font-style: italic;
   text-align: center;
+}
+
+/* cards */
+.research paper, .students h2 {
+    background: #ffffff;
+    border: 1px solid #eee; /* Very light border */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02); /* Soft, modern shadow */
+    transition: box-shadow 0.3s ease;
+}
+
+.research paper:hover {
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05); /* Lifts on hover */
 }

@@ -1,85 +1,127 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- Global Styles --- */
 body {
     padding: 0;
     margin: 0;
-    background: #000000;
+    background: #ffffff; /* White background */
+    color: #000000;      /* Black text color */
 }
+body {
+    font-family: 'Inter', sans-serif; /* Cleaner body text */
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif; /* Elegant headers */
+    font-weight: 700;
+}
+
+/* --- Navigation Bar --- */
 .navbar {
-    background:#808080;
+    background: #f8f9fa; /* Light grey navbar */
+    border-bottom: 1px solid #ddd;
 }
+
 .nav-link,
 .navbar-brand {
-    color: #fff;
+    color: #000000 !important;
     cursor: pointer;
 }
+
 .nav-link {
     margin-right: 1em !important;
 }
+
 .nav-link:hover {
-    color: #000;
+    color: #555; /* Slight grey on hover */
 }
+
 .navbar-collapse {
     justify-content: flex-end;
 }
+
+/* --- Layout Columns --- */
 .description:after {
     content: "";
     display: table;
     clear: both;
 }
+
 .column {
     float: left;
     width: 50%;
     padding: 10px;
+    color: #000000;
 }
-.column h1 {
-    color: #FED401;
+
+.column h1, .column h2 {
+    color: #000000; /* Headers to black; change to #FED401 if you want the yellow accent */
 }
-.column h2 {
-    color: #FED401;
-}
+
 .column p {
-    color: #fff;
     font-size: 1.3rem;
     line-height: 1.5;
+    color: #000000;
 }
-.column img {
-    padding-top: 52px;
-    max-width:70%;
-    max-height:70%;
-    padding-bottom: 10px;
-}
+
 .column ul {
     padding-top: 0px;
-    color: #fff;
     font-size: 1.3rem;
+    color: #000000;
 }
 
+/* --- FIXED PROFILE PICTURE --- */
 .column img {
+    display: block;           /* Required for horizontal centering */
+    margin: 52px auto 10px auto; /* 52px Top Margin (fixes rounding), Auto Left/Right (centers), 10px Bottom */
     width: 50%;
+    max-width: 70%;
+    border-radius: 20px;      /* Rounds all four corners correctly */
+    padding: 0;               /* Removed padding-top to fix the square corner issue */
 }
 
+/* --- Full Width Sections (Research, Teaching, etc.) --- */
 .fullwidth {
     float: left;
     padding: 10px;
+    color: #000000;
+    width: 100%; /* Ensures it takes full width */
 }
-.fullwidth h1 {
-    color: #FED401;
-}
-.fullwidth h2 {
-    color: #FED401;
-}
+
 .fullwidth p {
-    color: #fff;
     font-size: 1.3rem;
     line-height: 1.5;
+    color: #000000;
 }
+
 .fullwidth img {
-    padding-top: 52px;
-    max-width:70%;
-    max-height:70%;
-    padding-bottom: 10px;
+    display: block;
+    margin: 52px auto 10px auto;
+    max-width: 70%;
+    border-radius: 20px;
 }
+
 .fullwidth ul {
     padding-top: 0px;
-    color: #fff;
     font-size: 1.3rem;
+    color: #000000;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 1000px) {
+    .column {
+        width: 100%; /* Stack columns on small screens */
+    }
+}
+
+.column a i {
+    transition: transform 0.2s ease, color 0.2s ease;
+    margin-right: 5px;
+}
+
+.column a:hover i {
+    transform: translateY(-3px); /* Makes the icon "jump" slightly */
+    color: #00274C; /* A deep Michigan Blue accent */
 }

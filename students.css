@@ -6,43 +6,27 @@
     text-align: left;
     margin-bottom: 10px;
     margin-top: 10px;
+    color: #000;
 }
 .students h1 {
-    color: #FED401;
     font-size: 2rem;
+    color: #00274C !important; /* Michigan Blue or a strong Navy */
+    border-bottom: 2px solid #FED401; /* Keeps your yellow as a stylish accent line */
+    padding-bottom: 5px;
+    margin-top: 40px;
 }
 .students h2 {
-    color: #fff;
     font-size: 1.5rem;
+    color: #333 !important;
 }
 .students p {
-    color: #fff;
     font-size: 1.1rem;
 }
 
 .students ul {
-    color: #fff;
     font-size: 1.1rem;
     margin-top: -16px;
-}
-.statement {
-    max-width: 80%;
-    left: 10%;
-    right: 10%;
-    position: relative;
-    text-align: left;
-    margin-bottom: 10px;
-    margin-top: 10px;
-
-}
-.statement p {
-    color: #fff;
-    font-size: 1.1rem;
-}
-.statement h1 {
-    color: #fff;
-    font-size: 1.5rem;
-    font-style: bold;
+} font-style: bold;
 }
 .students figure{
     margin-top: 10px;
