@@ -44,7 +44,7 @@ h1, h2, h3 {
 /* Fix for mobile menu icon visibility */
 .navbar-toggler-icon {
     /* This forces the white icon to become black */
-    filter: invert(1);
+    filter: invert(1) !important;
 }
 
 .navbar-toggler {
