@@ -38,6 +38,12 @@ h1, h2, h3 {
     color: #555; /* Slight grey on hover */
 }
 
+/* Highlight the current page link */
+.nav-link.active {
+    font-weight: 700;
+    border-bottom: 2px solid #FED401; /* Your accent color */
+}
+
 .navbar-collapse {
     justify-content: flex-end;
 }
@@ -85,12 +91,12 @@ h1, h2, h3 {
 
 /* --- FIXED PROFILE PICTURE --- */
 .column img {
-    display: block;           /* Required for horizontal centering */
-    margin: 52px auto 10px auto; /* 52px Top Margin (fixes rounding), Auto Left/Right (centers), 10px Bottom */
-    width: 50%;
-    max-width: 70%;
-    border-radius: 20px;      /* Rounds all four corners correctly */
-    padding: 0;               /* Removed padding-top to fix the square corner issue */
+    display: block;
+    margin: 52px auto 10px auto;
+    width: 60%; /* Slightly larger is often better for personal sites */
+    border-radius: 20px;
+    border: 1px solid #f0f0f0; /* Very faint border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Very soft shadow */
 }
 
 /* --- Full Width Sections (Research, Teaching, etc.) --- */
@@ -135,6 +141,20 @@ h1, h2, h3 {
 .column a:hover i {
     transform: translateY(-3px); /* Makes the icon "jump" slightly */
     color: #00274C; /* A deep Michigan Blue accent */
+}
+
+/* Change all links in your body text to a consistent professional color */
+p a, li a, h2 a {
+    color: #004b98; /* A slightly more sophisticated academic blue */
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.3s ease;
+}
+
+p a:hover, li a:hover {
+    color: #00274C; /* Darker navy on hover */
+    border-bottom: 1px solid #00274C;
+    text-decoration: none;
 }
 
 .research, .teach, .service, .students {
