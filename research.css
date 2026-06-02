@@ -67,6 +67,16 @@
     box-shadow: 0 8px 15px rgba(0,0,0,0.05); /* Lifts on hover */
 }
 
+.research p sup {
+    color: #777; /* Subtle grey for the legend/dagger */
+}
+
+.supervised-legend {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
 .btn-paper {
     display: inline-block;
     font-size: 0.85rem;
