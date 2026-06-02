@@ -136,3 +136,7 @@ h1, h2, h3 {
     transform: translateY(-3px); /* Makes the icon "jump" slightly */
     color: #00274C; /* A deep Michigan Blue accent */
 }
+
+.research, .teach, .service, .students {
+    max-width: 900px; /* Limits the stretch on huge monitors */
+}
