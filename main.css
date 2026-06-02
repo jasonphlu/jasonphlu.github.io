@@ -93,7 +93,7 @@ h1, h2, h3 {
 .column img {
     display: block;
     margin: 52px auto 10px auto;
-    width: 60%; /* Slightly larger is often better for personal sites */
+    width: 50%;
     border-radius: 20px;
     border: 1px solid #f0f0f0; /* Very faint border */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Very soft shadow */
