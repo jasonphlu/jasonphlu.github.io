@@ -41,6 +41,16 @@ h1, h2, h3 {
 .navbar-collapse {
     justify-content: flex-end;
 }
+/* Fix for mobile menu icon visibility */
+.navbar-toggler-icon {
+    /* This forces the white icon to become black */
+    filter: invert(1);
+}
+
+.navbar-toggler {
+    /* Adds a subtle border around the icon button for better definition */
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
 
 /* --- Layout Columns --- */
 .description:after {
