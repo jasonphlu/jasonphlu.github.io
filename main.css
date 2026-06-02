@@ -43,13 +43,14 @@ h1, h2, h3 {
 }
 /* Fix for mobile menu icon visibility */
 .navbar-toggler-icon {
-    /* This forces the white icon to become black */
-    filter: invert(1) !important;
+    filter: none !important; /* Remove the invert filter so it doesn't flip back to white */
 }
 
+/* 2. Style the button box itself */
 .navbar-toggler {
-    /* Adds a subtle border around the icon button for better definition */
-    border-color: rgba(0, 0, 0, 0.1) !important;
+    border: 1.5px solid #000000 !important; /* Darker border for better visibility */
+    padding: 4px 8px;
+    outline: none !important; /* Removes the blue glow when clicked */
 }
 
 /* --- Layout Columns --- */
